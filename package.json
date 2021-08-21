@@ -1,0 +1,25 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "PI API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Helgi Poulsen",
+  "license": "ISC",
+  "dependencies": {
+    "alphavantage": "^2.2.0",
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.10",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.4",
+    "reddit-fetch": "^1.5.1",
+    "request": "^2.88.2",
+    "sequelize": "^6.6.4",
+    "stocksocket": "^2.1.2",
+    "yahoo-finance-news": "^1.0.2"
+  }
+}
