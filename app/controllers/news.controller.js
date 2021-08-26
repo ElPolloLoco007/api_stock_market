@@ -1,6 +1,8 @@
+const keysConfig = require("../config/keys.config.js");
+
 
 var yahooFinanceNews = require('yahoo-finance-news');
-const redditFetch = require('reddit-fetch');
+var axios = require("axios");
 
 exports.yahoo = (req, res) => {
     if (!req.params.id) {
@@ -16,20 +18,40 @@ exports.yahoo = (req, res) => {
     });
 };
 
-exports.redditdd = (req, res) => {
-    redditFetch({
-        subreddit: 'wallstreetbets',
-        link_flair_text: 'dd',
-        sort: 'top',
-        allowNSFW: true,
-        allowModPost: true,
-        allowCrossPost: true,
-        allowVideo: true
-    
-    }).then(post => {
-        console.log(post);
-        //res.json(post);
+exports.fearandgreedindex = (req, res) => {
+    var options = {
+        method: 'GET',
+        url: 'https://stock-market-data.p.rapidapi.com/buzz/fear-and-greed-index',
+        headers: {
+            'x-rapidapi-host': 'stock-market-data.p.rapidapi.com',
+            'x-rapidapi-key': keysConfig.RAPIDAPI
+        }
+    };
 
+    axios.request(options).then(function (response) {
+        console.log(response.data);
+        res.send(response.data);
+    }).catch(function (error) {
+        console.error(error);
+    });
+};
+
+exports.wsbmentions = (req, res) => {
+    var options = {
+        method: 'GET',
+        url: 'https://stock-market-data.p.rapidapi.com/stock/valuation/valuation-measures',
+        params: { ticker_symbol: 'SAVA' },
+        headers: {
+            'x-rapidapi-host': 'stock-market-data.p.rapidapi.com',
+            'x-rapidapi-key': keysConfig.RAPIDAPI
+        }
+    };
+    axios.request(options).then(function (response) {
+        console.log(response.data);
+        res.send(response.data);
+
+    }).catch(function (error) {
+        console.error(error);
     });
 };
 

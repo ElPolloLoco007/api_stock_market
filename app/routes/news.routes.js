@@ -5,7 +5,8 @@ module.exports = app => {
   
     // Create a bank
     router.get("/yahoo/:id", news.yahoo);
-    router.get("/reddit/dd", news.redditdd);
+    router.get("/fearandgreedindex", news.fearandgreedindex);
+    router.get("/wsbmentions", news.wsbmentions);
 
    
     app.use('/api/news', router);
